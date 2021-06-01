@@ -1,12 +1,14 @@
 <template>
   <div class="home">
-    <h1>{{ title }}</h1>
-    <character></character>
-    <!-- <button class="btn-primary btn" @click="getCharachers">Click</button> -->
-
-    <!-- <pre>
-      {{ response }}
-    </pre> -->
+    <h1>{{title}}</h1>
+    <h2>{{subtitle}}</h2>
+    <div class="character__list">
+      <character
+    v-for="(id, index) in this.initial_ids"
+    v-bind:id="id"
+    v-bind:key="index"
+    />
+    </div>
   </div>
 </template>
 
@@ -18,7 +20,9 @@ export default {
 
   data() {
     return {
-      title: "this is perfect",
+      title: "Choose one of the charecter of Star Wars",
+      subtitle: "Click on them to see more ones",
+      initial_ids: [1, 2, 3]
     };
   },
 
@@ -85,6 +89,12 @@ button,
   // @extend %flex-align;
   @include flex-align(center, center);
   flex-direction: column;
+
+  .character__list{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 2rem;
+  }
 
   h1 {
     color: $primary-color;
