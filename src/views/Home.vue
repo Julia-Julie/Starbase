@@ -1,8 +1,8 @@
 <template>
   <div class="home">
     <h1>{{ title }}</h1>
-
-    <button class="btn-primary btn" @click="getCharachers">Click</button>
+    <character></character>
+    <!-- <button class="btn-primary btn" @click="getCharachers">Click</button> -->
 
     <!-- <pre>
       {{ response }}
@@ -11,9 +11,10 @@
 </template>
 
 <script>
+import Character from '../components/Character.vue';
+
 export default {
   name: "Home",
-  components: {},
 
   data() {
     return {
@@ -21,17 +22,24 @@ export default {
     };
   },
 
-  methods: {
-    getCharachers() {
-      fetch("https://swapi.dev/api/people", {
-        method: "Get",
-      })
-        // .then((response) => console.log(response))
-        // .then(response => response.text())
-        .then((response) => response.json())
-        .then((json) => console.log(json));
-    },
+  components:{
+    Character
   },
+
+
+
+  // methods: {
+    // getCharachers() {
+    //   fetch("https://swapi.dev/api/people/1", {
+    //     method: "Get",
+    //   })
+    //     .then((response) => console.log(response))
+    //     .then(response => response.text())
+    //     .then(response => response.blob())
+    //     .then((response) => response.json())
+    //     .then((json) => console.log(json));
+    // },
+  // },
 };
 </script>
 
